@@ -66,15 +66,8 @@
           aria-labelledby="product-list"
         ></div>
       </div>
-      <!-- Shopping Cart Section -->
-      <div class="cart-container" role="region" aria-labelledby="cart-title">
-        <h2>Shopping Cart</h2>
-        <!-- Generate Cart Items Dynamically -->
-        <div class="cart-items" role="list"></div>
-        <p>Total Price:<span id="total-price">0.00</span></p>
-      </div>
       <!-- Checkout Form -->
-      <div
+      <!-- <div
         class="checkout-container"
         role="form"
         aria-labelledby="checkout-form"
@@ -128,6 +121,33 @@
             Submit
           </button>
         </form>
+      </div> -->
+
+      <!-- Shopping Cart Section Using Modal-->
+      <div
+        class="shopping-cart-modal"
+        style="display: none"
+        role="dialog"
+        aria-labelledby="cart-modal-title"
+        aria-hidden="true"
+      >
+        <div
+          class="modal-cart-content"
+          role="region"
+          aria-labelledby="cart-title"
+        >
+          <h2 id="cart-modal-title">Your Shopping Cart</h2>
+          <!-- Generate Cart Items Dynamically -->
+          <div id="cart-modal-items" role="list"></div>
+          <p>Total Price: <span id="cart-modal-total-price">0.00</span></p>
+          <button
+            class="modal-cart-close"
+            aria-label="Close cart"
+            onclick="closeCartModal()"
+          >
+            Close
+          </button>
+        </div>
       </div>
 
       <!-- Modal for Product Details -->
@@ -165,7 +185,7 @@
         </select>
       </aside> -->
     </main>
-    <footer>Footer</footer>
+    <!-- <footer>Footer</footer> -->
 
     <script src="products.js"></script>
     <script src="app.js"></script>

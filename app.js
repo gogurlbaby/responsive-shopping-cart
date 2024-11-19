@@ -1,14 +1,36 @@
 const productList = document.querySelector(".product-list-container");
 const searchInput = document.getElementById("search-bar");
-const cartItems = document.querySelector(".cart-items");
-const totalPrice = document.getElementById("total-price");
+const cartItems = document.getElementById("cart-modal-items");
+const totalPrice = document.getElementById("cart-modal-total-price");
 const productDetailModal = document.querySelector(".product-detail-modal");
 const modalContent = document.querySelector(".modal-content");
 const modalCloseButton = document.querySelector(".modal-close");
-const checkoutForm = document.getElementById("checkout-form");
+// const checkoutForm = document.getElementById("checkout-form");
 const cancelButton = document.getElementById("cancel-button");
+const cartModal = document.querySelector(".shopping-cart-modal");
+const cartCount = document.getElementById("cart-count");
 
+// Initialize Cart
 let cart = [];
+
+// Event Listener for Cart
+document
+  .querySelector(".cart-container")
+  .addEventListener("click", function (e) {
+    e.preventDefault();
+    openCartModal();
+  });
+
+// Function to Open Cart Modal
+function openCartModal() {
+  cartModal.style.display = "flex";
+  updateCart();
+}
+
+// Function to Close Cart Modal
+function closeCartModal() {
+  cartModal.style.display = "none";
+}
 
 // Function to Update Cart
 function updateCart() {
@@ -32,6 +54,7 @@ function updateCart() {
     // Remove Button
     const removeButton = document.createElement("button");
     removeButton.textContent = "Remove";
+    removeButton.className = "remove-btn";
     // ARIA label for removing product
     removeButton.setAttribute("aria-label", `Remove ${product.name} from cart`);
     removeButton.addEventListener("click", function () {
@@ -43,6 +66,7 @@ function updateCart() {
   });
 
   updateTotalPrice();
+  updateCartCount();
 }
 
 // Function to Update Total Price
@@ -60,6 +84,12 @@ function updateCartCount() {
   cartCount.textContent = cart.length;
 }
 
+cartModal
+  .querySelector(".modal-cart-content")
+  .addEventListener("click", function (e) {
+    e.stopPropagation(); // Prevent closing modal when clicking inside
+  });
+
 // Function to Add to Cart
 function addToCart(productId) {
   const product = products.find(function (item) {
@@ -68,6 +98,7 @@ function addToCart(productId) {
   if (product) {
     cart.push(product);
     updateCart();
+    updateCartModal();
     updateCartCount();
   }
 }
@@ -78,44 +109,73 @@ function removeFromCart(index) {
   updateCart();
 }
 
+// Function to Update Cart Modal
+function updateCartModal() {
+  cartModalItems.innerHTML = "";
+
+  cart.forEach(function (product, index) {
+    const cartItem = document.createElement("div");
+    cartItem.className = "cart-item";
+
+    const productName = document.createElement("span");
+    productName.textContent = product.name;
+    cartItem.appendChild(productName);
+
+    const productPrice = document.createElement("span");
+    productPrice.textContent = "$" + product.price;
+    cartItem.appendChild(productPrice);
+
+    const removeButton = document.createElement("button");
+    removeButton.textContent = "Remove";
+    removeButton.setAttribute("aria-label", `Remove ${product.name} from cart`);
+    removeButton.addEventListener("click", function () {
+      removeFromCart(index);
+      updateCartModal();
+    });
+    cartItem.appendChild(removeButton);
+
+    cartModalItems.appendChild(cartItem);
+  });
+}
+
 // Function to Display Product Details in a Modal
 function showProductDetails(product) {
   modalContent.innerHTML = "";
 
   // Form Validation for Checkout
-  function formValidation(event) {
-    event.preventDefault();
+  // function formValidation(event) {
+  //   event.preventDefault();
 
-    const name = document.getElementById("name").value;
-    const email = document.getElementById("email").value;
-    const shippingAddress = document.getElementById("shippingAddress").value;
-    const creditCard = document.getElementById("creditCard").value;
+  //   const name = document.getElementById("name").value;
+  //   const email = document.getElementById("email").value;
+  //   const shippingAddress = document.getElementById("shippingAddress").value;
+  //   const creditCard = document.getElementById("creditCard").value;
 
-    // To check if all fields are filled
-    if (!name || !email || !shippingAddress || !creditCard) {
-      alert("Please fill out all fields");
-      return;
-    }
+  //   // To check if all fields are filled
+  //   if (!name || !email || !shippingAddress || !creditCard) {
+  //     alert("Please fill out all fields");
+  //     return;
+  //   }
 
-    // Email Format Validation
-    const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-    if (!emailPattern.test(email)) {
-      alert("Please enter a valid email address");
-      return;
-    }
+  //   // Email Format Validation
+  //   const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+  //   if (!emailPattern.test(email)) {
+  //     alert("Please enter a valid email address");
+  //     return;
+  //   }
 
-    // Form Submission
-    alert("Checkout successful!");
-    checkoutForm.reset();
-  }
+  //   // Form Submission
+  //   alert("Checkout successful!");
+  //   checkoutForm.reset();
+  // }
 
-  // Event Listener for Form Submission
-  checkoutForm.addEventListener("submit", formValidation);
+  // // Event Listener for Form Submission
+  // checkoutForm.addEventListener("submit", formValidation);
 
-  // Event Listener for Cancel Button to Reset Form
-  cancelButton.addEventListener("cancel-button", function () {
-    checkoutForm.reset();
-  });
+  // // Event Listener for Cancel Button to Reset Form
+  // cancelButton.addEventListener("cancel-button", function () {
+  //   checkoutForm.reset();
+  // });
 
   // Display  Product Image for Modal
   const productImage = document.createElement("img");
