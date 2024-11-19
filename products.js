@@ -5,7 +5,7 @@ const products = [
     price: "60.00",
     description: "This is product 1",
     category: "product1",
-    image: "",
+    image: "/images/laptop.webp",
   },
   {
     id: 1,
@@ -13,7 +13,7 @@ const products = [
     price: "40.00",
     description: "This is product 2",
     category: "product2",
-    image: "",
+    image: "/images/laptop.webp",
   },
   {
     id: 2,
@@ -21,7 +21,7 @@ const products = [
     price: "10.00",
     description: "This is product 3",
     category: "product3",
-    image: "",
+    image: "/images/laptop.webp",
   },
   {
     id: 3,
@@ -29,7 +29,7 @@ const products = [
     price: "20.00",
     description: "This is product 4",
     category: "product4",
-    image: "",
+    image: "/images/laptop.webp",
   },
   {
     id: 4,
@@ -37,7 +37,7 @@ const products = [
     price: "90.00",
     description: "This is product 5",
     category: "product5",
-    image: "",
+    image: "/images/laptop.webp",
   },
   {
     id: 5,
@@ -45,6 +45,6 @@ const products = [
     price: "30.00",
     description: "This is product 6",
     category: "product6",
-    image: "",
+    image: "/images/laptop.webp",
   },
 ];

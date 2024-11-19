@@ -4,7 +4,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Product List with Shopping Cart</title>
-    <link rel="stylesheet" href="index.css" />
+    <link rel="stylesheet" href="./styles/index.css" />
+    <link rel="stylesheet" href="./styles/navbar.css" />
+    <link rel="stylesheet" href="./styles/hero.css" />
+    <link rel="stylesheet" href="./styles/product-list.css" />
     <script src="https://unpkg.com/feather-icons"></script>
   </head>
   <body>
@@ -19,22 +22,10 @@
             type="search"
             name="search"
             id="search-bar"
+            class="search"
             placeholder="Search products..."
             aria-label="Search products"
           />
-          <select
-            name="product-category"
-            id="product-category"
-            aria-label="Filter products by category"
-          >
-            <option value="all-products">All Products</option>
-            <option value="product-1">Product 1</option>
-            <option value="product-2">Product 2</option>
-            <option value="product-3">Product 3</option>
-            <option value="product-4">Product 4</option>
-            <option value="product-5">Product 5</option>
-            <option value="product-6">Product 6</option>
-          </select>
         </div>
 
         <!-- Cart -->
@@ -50,12 +41,32 @@
       </nav>
     </header>
     <main>
-      <!-- Generate Product List Dynamically -->
-      <div
-        class="product-list-container"
-        role="region"
-        aria-labelledby="product-list"
-      ></div>
+      <!-- Hero Section -->
+      <div class="hero-section">
+        <div class="hero-content">
+          <h1 class="hero-title">Welcome to SMart</h1>
+          <p class="hero-description">
+            Your one-stop destination for the best deals and amazing products.
+          </p>
+          <a href="" class="hero-btn">Start Shopping Now</a>
+        </div>
+      </div>
+
+      <!-- Products List Section -->
+      <div class="product-list-section">
+        <p class="product">Products List</p>
+        <p class="product-text">
+          Explore our curated collection of must-have products—where quality
+          meets convenience, all at your fingertips!
+        </p>
+        <!-- Generate Product List Dynamically -->
+        <div
+          class="product-list-container"
+          role="region"
+          aria-labelledby="product-list"
+        ></div>
+      </div>
+      <!-- Shopping Cart Section -->
       <div class="cart-container" role="region" aria-labelledby="cart-title">
         <h2>Shopping Cart</h2>
         <!-- Generate Cart Items Dynamically -->
@@ -137,6 +148,22 @@
           Close
         </button>
       </div>
+
+      <!-- <aside>
+        <select
+          name="product-category"
+          id="product-category"
+          aria-label="Filter products by category"
+        >
+          <option value="all-products">All Products</option>
+          <option value="product-1">Product 1</option>
+          <option value="product-2">Product 2</option>
+          <option value="product-3">Product 3</option>
+          <option value="product-4">Product 4</option>
+          <option value="product-5">Product 5</option>
+          <option value="product-6">Product 6</option>
+        </select>
+      </aside> -->
     </main>
     <footer>Footer</footer>
 

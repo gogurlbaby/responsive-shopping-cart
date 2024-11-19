@@ -117,26 +117,27 @@ function showProductDetails(product) {
     checkoutForm.reset();
   });
 
-  // Display  Product Image
+  // Display  Product Image for Modal
   const productImage = document.createElement("img");
   productImage.src = product.image || "https://via.placeholder.com/150";
   productImage.alt = product.name;
 
-  // Display Product Name
-  const productName = document.createElement("h2");
+  // Display Product Name for Modal
+  const productName = document.createElement("h3");
   productName.textContent = product.name;
 
-  // Display  Product Description
-  const productDescription = document.createElement("p");
+  // Display  Product Description for Modal
+  const productDescription = document.createElement("h4");
   productDescription.textContent = product.description;
 
-  // Display  Product Price
+  // Display  Product Price for Modal
   const productPrice = document.createElement("p");
   productPrice.textContent = "Price: $" + product.price;
 
-  // Display Add to Cart Button
+  // Display Add to Cart Button for Modal
   const addToCartButton = document.createElement("button");
   addToCartButton.textContent = "Add to Cart";
+  addToCartButton.className = "add-to-cart-btn";
   // ARIA label for Add to Cart
   addToCartButton.setAttribute("aria-label", `Add ${product.name} to cart`);
   addToCartButton.addEventListener("click", function () {
@@ -191,38 +192,52 @@ function displayProducts(productsToDisplay) {
     productImage.alt = product.name;
     productCard.appendChild(productImage);
 
+    // Created a container for the text
+    const cardTextContainer = document.createElement("div");
+    cardTextContainer.className = "card-text-container";
+
     // Created Product Name
     const productName = document.createElement("h3");
     productName.textContent = product.name;
-    productCard.appendChild(productName);
+    cardTextContainer.appendChild(productName);
 
     // Created Product Description
-    const productDescription = document.createElement("p");
+    const productDescription = document.createElement("h4");
     productDescription.textContent = product.description;
-    productCard.appendChild(productDescription);
+    cardTextContainer.appendChild(productDescription);
 
     // Created Price
     const productPrice = document.createElement("p");
     productPrice.textContent = "$" + product.price;
-    productCard.appendChild(productPrice);
+    cardTextContainer.appendChild(productPrice);
+
+    // Created a container for the buttons
+    const cardButtonContainer = document.createElement("div");
+    cardButtonContainer.className = "card-button-container";
 
     // Created Add to Cart Button
     const addToCartButton = document.createElement("button");
     addToCartButton.textContent = "Add to Cart";
+    addToCartButton.className = "add-to-cart-btn";
     // ARIA label for Add to Cart
     addToCartButton.setAttribute("aria-label", `Add ${product.name} to cart`);
     addToCartButton.addEventListener("click", function () {
       addToCart(product.id);
     });
-    productCard.appendChild(addToCartButton);
+    cardButtonContainer.appendChild(addToCartButton);
 
     // View Details Button
     const viewDetailsButton = document.createElement("button");
     viewDetailsButton.textContent = "View Details";
+    viewDetailsButton.className = "view-details-btn";
     viewDetailsButton.addEventListener("click", function () {
       showProductDetails(product);
     });
-    productCard.appendChild(viewDetailsButton);
+    cardButtonContainer.appendChild(viewDetailsButton);
+
+    cardTextContainer.appendChild(cardButtonContainer);
+
+    productCard.appendChild(cardTextContainer);
 
     productList.appendChild(productCard);
   });
