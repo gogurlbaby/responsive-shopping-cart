@@ -1,10 +1,10 @@
 const products = [
   {
     id: 0,
-    name: "Product 1",
-    price: "60.00",
-    description: "This is product 1",
-    category: "product1",
+    name: "SAMSUNG GALAXY A25 8GB/256GB",
+    price: "₵ 4,799.00",
+    description: "",
+    category: "phones",
     image: "/images/laptop.webp",
   },
   {

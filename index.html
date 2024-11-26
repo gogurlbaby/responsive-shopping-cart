@@ -6,6 +6,7 @@
     <title>Product List with Shopping Cart</title>
     <link rel="stylesheet" href="./styles/index.css" />
     <link rel="stylesheet" href="./styles/navbar.css" />
+    <link rel="stylesheet" href="./styles/footer.css">
     <link rel="stylesheet" href="./styles/hero.css" />
     <link rel="stylesheet" href="./styles/product-list.css" />
     <script src="https://unpkg.com/feather-icons"></script>
@@ -14,9 +15,9 @@
     <!-- Navbar Section -->
     <header>
       <nav>
-        <div class="logo-container">
+        <a href="/" class="logo-container">
           <p class="logo">SMART</p>
-        </div>
+        </a>
         <div class="search-container">
           <input
             type="search"
@@ -48,13 +49,13 @@
           <p class="hero-description">
             Your one-stop destination for the best deals and amazing products.
           </p>
-          <a href="" class="hero-btn">Start Shopping Now</a>
+          <a href="#product-list-section" class="hero-btn">Start Shopping Now</a>
         </div>
       </div>
 
       <!-- Products List Section -->
-      <div class="product-list-section">
-        <p class="product">Products List</p>
+      <div id="product-list-section">
+        <p class="product">Trending Products</p>
         <p class="product-text">
           Explore our curated collection of must-have products—where quality
           meets convenience, all at your fingertips!
@@ -66,62 +67,6 @@
           aria-labelledby="product-list"
         ></div>
       </div>
-      <!-- Checkout Form -->
-      <!-- <div
-        class="checkout-container"
-        role="form"
-        aria-labelledby="checkout-form"
-      >
-        <h2>Checkout</h2>
-        <form id="checkout-form">
-          <label for="name">Full Name</label>
-          <input
-            type="text"
-            name="name"
-            id="name"
-            placeholder="John Doe"
-            aria-label="Enter your full name"
-            required
-          />
-
-          <label for="email">Email Address</label>
-          <input
-            type="email"
-            name="email"
-            id="email"
-            placeholder="email@example.com"
-            aria-label="Enter your email address"
-            required
-          />
-
-          <label for="shipping-address">Shipping Address</label>
-          <input
-            type="text"
-            name="shippingAddress"
-            id="shippingAddress"
-            placeholder="123 Main St, City, Country"
-            aria-label="Enter your shipping address"
-            required
-          />
-
-          <label for="credit-card">Credit Card</label>
-          <input
-            type="text"
-            name="creditCard"
-            id="creditCard"
-            placeholder="1234 5678 9012 3456"
-            aria-label="Enter your credit card number"
-            required
-          />
-
-          <button type="button" id="cancel-button" aria-label="Cancel checkout">
-            Cancel
-          </button>
-          <button type="submit" aria-label="Submit checkout form">
-            Submit
-          </button>
-        </form>
-      </div> -->
 
       <!-- Shopping Cart Section Using Modal-->
       <div
@@ -140,15 +85,86 @@
           <!-- Generate Cart Items Dynamically -->
           <div id="cart-modal-items" role="list"></div>
           <p>Total Price: <span id="cart-modal-total-price">0.00</span></p>
-          <button
+          <div class="cart-btn-container">
+           <button
             class="modal-cart-close"
             aria-label="Close cart"
             onclick="closeCartModal()"
           >
             Close
           </button>
+
+          <button
+           class="modal-cart-proceed"
+           aria-label="Proceed to checkout"
+           id="proceedToCheckoutButton"
+          >
+           Proceed to Checkout
+          </button>
+          </div>
         </div>
       </div>
+
+      <!-- Checkout Modal -->
+<div
+class="checkout-modal"
+style="display: none"
+role="dialog"
+aria-labelledby="checkout-modal-title"
+aria-hidden="true"
+>
+<div class="modal-checkout-content">
+  <h2 id="checkout-modal-title">Checkout</h2>
+  <form id="checkout-modal-form">
+    <label for="modal-name">Full Name</label>
+    <input
+      type="text"
+      id="modal-name"
+      name="name"
+      placeholder="John Doe"
+      required
+    />
+
+    <label for="modal-email">Email Address</label>
+    <input
+      type="email"
+      id="modal-email"
+      name="email"
+      placeholder="email@example.com"
+      required
+    />
+
+    <label for="modal-address">Shipping Address</label>
+    <input
+      type="text"
+      id="modal-address"
+      name="shippingAddress"
+      placeholder="123 Main St, City, Country"
+      required
+    />
+
+    <label for="modal-card">Credit Card</label>
+    <input
+      type="text"
+      id="modal-card"
+      name="creditCard"
+      placeholder="1234 5678 9012 3456"
+      required
+    />
+
+    <button
+      type="button"
+      class="modal-checkout-cancel"
+      aria-label="Cancel checkout"
+      onclick="closeCheckoutModal()"
+    >
+      Cancel
+    </button>
+    <button type="submit" class="modal-checkout-submit">Submit</button>
+  </form>
+</div>
+</div>
+
 
       <!-- Modal for Product Details -->
       <div
@@ -185,10 +201,56 @@
         </select>
       </aside> -->
     </main>
-    <!-- <footer>Footer</footer> -->
+    <footer>
+      <div class="logo-icons-container">
+        <p class="footer-logo">SMART</p>
+        <div class="icons-container">
+          <a href="">
+            <i data-feather="facebook" class="icon"></i>
+          </a>
+          <a href="">
+            <i data-feather="instagram" class="icon"></i>
+          </a>
+          <a href="">
+            <i data-feather="twitter" class="icon"></i>
+          </a>
+          <a href="">
+            <i data-feather="linkedin" class="icon"></i>
+          </a>
+          <a href="">
+            <i data-feather="youtube" class="icon"></i>
+          </a>
+        </div>
+      </div>
+      <div class="footer-categories">
+        <h4 class="category-heading">Categories</h4>
+        <a href="">
+          <p class="footer-category">Smart Phones</p>
+        </a>
+        <a href="">
+          <p class="footer-category">Laptops</p>
+        </a>
+        <a href="">
+          <p class="footer-category">Desktop Monitors</p>
+        </a>
+        <a href="">
+          <p class="footer-category">Smart Watches</p>
+        </a>
+      </div>
+      <div class="contact-container">
+        <h4 class="category-heading">Contact</h4>
+        <p class="address">P.O. Box AC 46, Accra</p>
+        <p class="contact-number">+233 2456 345 224</p>
 
-    <script src="products.js"></script>
-    <script src="app.js"></script>
+        <div class="email-input-container">
+          <input type="email" name="email-footer" id="email-footer" placeholder="Please subscribe here" class="footer-input">
+          <button class="footer-btn">Subscribe</button>
+        </div>
+      </div>
+    </footer>
+
+    <script src="./js/products.js"></script>
+    <script src="./js/app.js"></script>
     <script>
       feather.replace();
     </script>

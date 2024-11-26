@@ -5,13 +5,69 @@ const totalPrice = document.getElementById("cart-modal-total-price");
 const productDetailModal = document.querySelector(".product-detail-modal");
 const modalContent = document.querySelector(".modal-content");
 const modalCloseButton = document.querySelector(".modal-close");
-// const checkoutForm = document.getElementById("checkout-form");
+const modalCloseCart = document.querySelector(".modal-cart-close");
+const proceedToCheckoutButton = document.getElementById("proceedToCheckoutButton");
+const checkoutModal = document.querySelector(".checkout-modal");
+const checkoutModalForm = document.getElementById("checkout-modal-form");
 const cancelButton = document.getElementById("cancel-button");
 const cartModal = document.querySelector(".shopping-cart-modal");
 const cartCount = document.getElementById("cart-count");
 
 // Initialize Cart
 let cart = [];
+
+// Function to Open Checkout Modal
+function openCheckoutModal() {
+  checkoutModal.style.display = "flex";
+}
+
+// Function to Close Checkout Modal
+function closeCheckoutModal() {
+  checkoutModal.style.display = "none";
+}
+
+// Event Listener for Proceed to Checkout Button
+proceedToCheckoutButton.addEventListener("click", function () {
+  closeCartModal();
+  openCheckoutModal(); 
+});
+
+// Event Listener for Checkout Modal Form Submission
+checkoutModalForm.addEventListener("submit", function (event) {
+  event.preventDefault(); 
+
+  const name = document.getElementById("modal-name").value;
+  const email = document.getElementById("modal-email").value;
+  const address = document.getElementById("modal-address").value;
+  const card = document.getElementById("modal-card").value;
+
+  if (name && email && address && card) {
+    // Process checkout logic
+    alert("Checkout successful!");
+    checkoutModalForm.reset(); 
+    closeCheckoutModal(); 
+    cart = []; 
+    updateCart(); 
+  } else {
+    alert("Please fill out all fields!");
+  }
+});
+
+// Close Modal when clicking outside of the content
+window.addEventListener("click", function (event) {
+  if (event.target === checkoutModal) closeCheckoutModal();
+});
+
+
+// Pre-existing Event Listener for Cart Modal
+window.addEventListener("click", function (event) {
+  if (event.target === cartModal) closeCartModal();
+});
+
+window.addEventListener("click", function (event) {
+  if (event.target === cartModal) closeCartModal();
+  if (event.target === productDetailModal) closeModal();
+});
 
 // Event Listener for Cart
 document
@@ -31,6 +87,9 @@ function openCartModal() {
 function closeCartModal() {
   cartModal.style.display = "none";
 }
+
+// Event Listener to Close Cart Modal
+modalCloseCart.addEventListener("click", closeCartModal);
 
 // Function to Update Cart
 function updateCart() {
@@ -141,41 +200,6 @@ function updateCartModal() {
 // Function to Display Product Details in a Modal
 function showProductDetails(product) {
   modalContent.innerHTML = "";
-
-  // Form Validation for Checkout
-  // function formValidation(event) {
-  //   event.preventDefault();
-
-  //   const name = document.getElementById("name").value;
-  //   const email = document.getElementById("email").value;
-  //   const shippingAddress = document.getElementById("shippingAddress").value;
-  //   const creditCard = document.getElementById("creditCard").value;
-
-  //   // To check if all fields are filled
-  //   if (!name || !email || !shippingAddress || !creditCard) {
-  //     alert("Please fill out all fields");
-  //     return;
-  //   }
-
-  //   // Email Format Validation
-  //   const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-  //   if (!emailPattern.test(email)) {
-  //     alert("Please enter a valid email address");
-  //     return;
-  //   }
-
-  //   // Form Submission
-  //   alert("Checkout successful!");
-  //   checkoutForm.reset();
-  // }
-
-  // // Event Listener for Form Submission
-  // checkoutForm.addEventListener("submit", formValidation);
-
-  // // Event Listener for Cancel Button to Reset Form
-  // cancelButton.addEventListener("cancel-button", function () {
-  //   checkoutForm.reset();
-  // });
 
   // Display  Product Image for Modal
   const productImage = document.createElement("img");
@@ -301,6 +325,14 @@ function displayProducts(productsToDisplay) {
 
     productList.appendChild(productCard);
   });
+
+  // Display Message if no Products are Found
+  if (productsToDisplay.length === 0) {
+    const noProductsMessage = document.createElement("p");
+    noProductsMessage.textContent = "No products match your search criteria.";
+    noProductsMessage.className = "no-products-message";
+    productList.appendChild(noProductsMessage);
+  }
 }
 
 displayProducts(products);
