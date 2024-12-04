@@ -5,6 +5,8 @@ nav {
   justify-content: space-between;
   align-items: center;
   padding: 1rem;
+  position: sticky;
+  z-index: 100000;
 }
 
 a .logo {

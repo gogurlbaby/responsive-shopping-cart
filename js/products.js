@@ -2,7 +2,7 @@ const products = [
   {
     id: 0,
     name: "Samsung Galaxy A54 5G Smartphone",
-    price: "4,250.00",
+    price: "4250.00",
     description: "(Dual-SIMs, 8+256GB) - Violet",
     category: "phones",
     image: "/images/phones/samsung-a54-purple-1-1-1600x1600.webp",
@@ -10,7 +10,7 @@ const products = [
   {
     id: 1,
     name: "Dell Latitude 7400",
-    price: "22,000.00",
+    price: "22000.00",
     description: "Core i7 G8 8GB RAM 512 SSD Black",
     category: "laptops",
     image: "/images/laptops/10.jpg",
@@ -18,7 +18,7 @@ const products = [
   {
     id: 2,
     name: "Samsung Curved TV",
-    price: "30,000.00",
+    price: "30000.00",
     description: "",
     category: "television",
     image: "/images/tv/curved.jpeg",
@@ -26,7 +26,7 @@ const products = [
   {
     id: 3,
     name: "Apple iPhone 13 Pro Max 128GB",
-    price: "14,000.00",
+    price: "14000.00",
     description: "Gold Available",
     category: "phones",
     image: "/images/phones/iPhone-13-Pro-Gold_2.webp",
@@ -35,7 +35,7 @@ const products = [
   {
     id: 4,
     name: "Large Size LED TV 55 Inches Smart Big Android OLED LED TV 4K Smart Televisions",
-    price: "25,000.00",
+    price: "25000.00",
     description: "",
     category: "television",
     image: "/images/tv/large_tv.png",
@@ -51,7 +51,7 @@ const products = [
   {
     id: 6,
     name: "Samsung Galaxy A15 5G",
-    price: "3,200.00",
+    price: "3200.00",
     description: "(8GB + 128GB) / (8GB + 256GB)",
     category: "phones",
     image: "/images/phones/bdlpa155g128gb1.webp",
@@ -59,7 +59,7 @@ const products = [
   {
     id: 7,
     name: "HP Stream 14 Laptop, Intel Celeron N4000",
-    price: "9,000.00",
+    price: "9000.00",
     description: "4GB RAM, 32GB eMMC, Office 365, Royal Blue",
     category: "laptops",
     image: "/images/laptops/64c41e4771c5f52216163af1-hp-stream-14-laptop-intel-celeron.jpg",
@@ -67,7 +67,7 @@ const products = [
   {
     id: 8,
     name: "Next-Gen Gaming with PlayStation 5 Console",
-    price: "5,000.00",
+    price: "5000.00",
     description: "Lightning Speed, Stunning Graphics, Breathtaking Immersion",
     category: "games",
     image: "/images/games/ps5.jpg",
@@ -75,7 +75,7 @@ const products = [
   {
     id: 9,
     name: "MacBook Pro 13 8/256GB",
-    price: "25,000.00",
+    price: "25000.00",
     description: "M2 2022 edition",
     category: "laptops",
     image: "/images/laptops/c_6_2-800x800.jpg",
@@ -83,7 +83,7 @@ const products = [
   {
     id: 10,
     name: "TLC-FHD-SATELLITE-32”-32D3200",
-    price: "2,939.00",
+    price: "2939.00",
     description: "",
     category: "television",
     image: "/images/tv/123-jpg.webp",
@@ -91,10 +91,9 @@ const products = [
   {
     id: 11,
     name: "PlayStation 4 Console",
-    price: "9,000.00",
+    price: "9000.00",
     description: "",
     category: "games",
     image: "/images/games/ps4.webp",
-  },
-  
+  }, 
 ];

@@ -51,7 +51,7 @@ checkoutModalForm.addEventListener("submit", function (event) {
   const card = document.getElementById("modal-card").value;
 
   if (name && email && address && card) {
-    // Process checkout logic
+    // Process Checkout Logic
     alert("Checkout successful!");
     checkoutModalForm.reset(); 
     closeCheckoutModal(); 
@@ -96,7 +96,7 @@ function closeCartModal() {
 modalCloseCart.addEventListener("click", closeCartModal);
 
 function updateCart() {
-  cartItems.innerHTML = ""; // Clear cart items first
+  cartItems.innerHTML = ""; 
 
   // Add cart-empty class if cart is empty
   if (cart.length === 0) {
@@ -133,13 +133,13 @@ function updateCart() {
       cartItem.appendChild(productName);
 
       const productPrice = document.createElement("span");
-      productPrice.textContent = "$" + product.price;
+      productPrice.textContent = "GH₵" + product.price;
       cartItem.appendChild(productPrice);
 
       const removeButton = document.createElement("button");
       removeButton.textContent = "Remove";
       removeButton.className = "remove-btn";
-      removeButton.setAttribute("aria-label", `Remove ${product.name} from cart`);
+      removeButton.setAttribute("aria-label", `Remove GH₵{product.name} from cart`);
       removeButton.addEventListener("click", function () {
         removeFromCart(index);
       });
@@ -159,7 +159,7 @@ function updateCart() {
 function updateTotalPrice() {
   let total = 0;
   cart.forEach(function (product) {
-    total += parseFloat(product.price);
+    total += parseFloat(product.price) || 0;
   });
   totalPrice.textContent = total.toFixed(2);
 }
@@ -173,7 +173,7 @@ function updateCartCount() {
 cartModal
   .querySelector(".modal-cart-content")
   .addEventListener("click", function (e) {
-    e.stopPropagation(); // Prevent closing modal when clicking inside
+    e.stopPropagation(); 
   });
 
 // Function to Add to Cart
@@ -184,6 +184,7 @@ function addToCart(productId) {
   if (product) {
     cart.push(product);
     updateCart();
+    updateTotalPrice();
     updateCartCount();
   }
 }
@@ -192,6 +193,7 @@ function addToCart(productId) {
 function removeFromCart(index) {
   cart.splice(index, 1);
   updateCart();
+  updateTotalPrice();
 }
 
 // Function to Update Cart Modal
@@ -207,12 +209,12 @@ function updateCartModal() {
     cartItem.appendChild(productName);
 
     const productPrice = document.createElement("span");
-    productPrice.textContent = "$" + product.price;
+    productPrice.textContent = "GH₵" + product.price;
     cartItem.appendChild(productPrice);
 
     const removeButton = document.createElement("button");
     removeButton.textContent = "Remove";
-    removeButton.setAttribute("aria-label", `Remove ${product.name} from cart`);
+    removeButton.setAttribute("aria-label", `Remove GH₵{product.name} from cart`);
     removeButton.addEventListener("click", function () {
       removeFromCart(index);
       updateCartModal();
@@ -242,14 +244,14 @@ function showProductDetails(product) {
 
   // Display  Product Price for Modal
   const productPrice = document.createElement("p");
-  productPrice.textContent = "Price: $" + product.price;
+  productPrice.textContent = "Price: GH₵" + product.price;
 
   // Display Add to Cart Button for Modal
   const addToCartButton = document.createElement("button");
   addToCartButton.textContent = "Add to Cart";
   addToCartButton.className = "add-to-cart-btn";
   // ARIA label for Add to Cart
-  addToCartButton.setAttribute("aria-label", `Add ${product.name} to cart`);
+  addToCartButton.setAttribute("aria-label", `Add GH₵{product.name} to cart`);
   addToCartButton.addEventListener("click", function () {
     addToCart(product.id);
     closeModal();
@@ -302,7 +304,7 @@ function displayProducts(productsToDisplay) {
     productImage.alt = product.name;
     productCard.appendChild(productImage);
 
-    // Created a container for the text
+    // Created a container for the Text
     const cardTextContainer = document.createElement("div");
     cardTextContainer.className = "card-text-container";
 
@@ -318,10 +320,10 @@ function displayProducts(productsToDisplay) {
 
     // Created Price
     const productPrice = document.createElement("p");
-    productPrice.textContent = "$" + product.price;
+    productPrice.textContent = "GH₵" + product.price;
     cardTextContainer.appendChild(productPrice);
 
-    // Created a container for the buttons
+    // Created a container for the Buttons
     const cardButtonContainer = document.createElement("div");
     cardButtonContainer.className = "card-button-container";
 
@@ -330,7 +332,7 @@ function displayProducts(productsToDisplay) {
     addToCartButton.textContent = "Add to Cart";
     addToCartButton.className = "add-to-cart-btn";
     // ARIA label for Add to Cart
-    addToCartButton.setAttribute("aria-label", `Add ${product.name} to cart`);
+    addToCartButton.setAttribute("aria-label", `Add GH₵{product.name} to cart`);
     addToCartButton.addEventListener("click", function () {
       addToCart(product.id);
     });
@@ -362,3 +364,6 @@ function displayProducts(productsToDisplay) {
 }
 
 displayProducts(products);
+
+// Dynamically Update Year for Copyright Message on Footer
+document.getElementById("currentYear").textContent = new Date().getFullYear();
